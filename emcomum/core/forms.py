@@ -10,6 +10,7 @@ class IntroduceForm(forms.Form):
 
     person1_name = forms.CharField(label='',
                                     widget=forms.TextInput(attrs={'placeholder': 'Vinicius de Moraes'}))
+
     person1_email = forms.EmailField(label='',
                                       widget=forms.EmailInput(attrs={'placeholder': 'vinicius.moraes@mpb.br'}))
 
