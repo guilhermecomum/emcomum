@@ -28,3 +28,6 @@ def home(request):
     else:
         context = {'form': IntroduceForm()}
         return render(request, 'index.html', context)
+
+def thanks(request):
+    return render(request, 'thanks.html')

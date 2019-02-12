@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from emcomum.core.views import home
+from emcomum.core.views import home, thanks
 
 urlpatterns = [
     path('', home, name='home'),
+    path('obrigado', thanks, name='thanks'),
     path('admin/', admin.site.urls),
 ]

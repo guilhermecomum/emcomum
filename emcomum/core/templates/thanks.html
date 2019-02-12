@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 ">
+  <div class="row justify-content-md-center">
+    <div class="col-md-8">
+      <h1 class="display-4">Apresentação enviado com sucesso!</h1>
+      Espero que sua apresentação renda bons frutos :D
+      <br /><br />
+      <a class="btn btn-primary" href="{% url 'home' %}">Fazer outra apresentação!</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

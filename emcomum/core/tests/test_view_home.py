@@ -100,3 +100,16 @@ class IntroduceFormInvalidPost(TestCase):
     def test_form_has_erros(self):
         form = self.res.context['form']
         self.assertTrue(form.errors)
+
+
+class ThanksTest(TestCase):
+    def setUp(self):
+        self.res = self.client.get(r('thanks'))
+
+    def test_get(self):
+        """GET / must return status code 200"""
+        self.assertEqual(200, self.res.status_code)
+
+    def test_template(self):
+        """Must use index.html"""
+        self.assertTemplateUsed(self.res, 'thanks.html')
