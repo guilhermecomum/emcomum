@@ -1,11 +1,81 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Em comum</title>
-  </head>
-  <body>
-    <h1>Em comum</h1>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-2">
+  <div class="row justify-content-md-center">
+    <div class="col-md-7">
+      <h1 class="display-2">Em comum</h1>
+      <p>
+        Já pensou em apresentar duas pessoas por elas terem interesses em comum?
+        Mas por algum motivo nunca rolou esse match?
+      </p>
+
+      <p>
+        Nós do comum acreditamos que é necessário focar no que nos apróxima, e por
+        isso criamos o em comum, uma plataforma simples para conectar pessoas :)
+      </p>
+
+      <p>
+        Insira os emails das pessoas que você deseja conectar e escreva um
+        texto apresentando as duas e pronto!
+      </p>
+
+      <p>
+        Cada uma delas vai receber uma cópia da sua mensagem!
+      </p>
+    </div>
+  </div>
+  <hr width="200px" />
+  <div class="row justify-content-md-center">
+    <div class="col-md-7">
+      <form action="." method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Seus dados</label>
+          <div class="form-row">
+            <div class="col">
+              {{ form.from_name | as_crispy_field }}
+            </div>
+            <div class="col">
+              {{ form.from_email | as_crispy_field }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Pessoa 1</label>
+          <div class="form-row">
+            <div class="col">
+              {{ form.person1_name | as_crispy_field }}
+            </div>
+            <div class="col">
+              {{ form.person1_email | as_crispy_field }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Pessoa 2</label>
+
+          <div class="form-row">
+            <div class="col">
+              {{ form.person2_name | as_crispy_field }}
+            </div>
+            <div class="col">
+              {{ form.person2_email | as_crispy_field }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">Apresentação</label>
+          {{ form.message | as_crispy_field }}
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" >Apresentar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

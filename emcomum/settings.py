@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'emcomum.core',
 ]
 
@@ -124,3 +125,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #Green Setup
 TEST_RUNNER="green.djangorunner.DjangoRunner"
+
+#Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
