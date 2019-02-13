@@ -50,7 +50,7 @@ class HomeTest(TestCase):
 
 class MeetingFormPostTest(TestCase):
     def setUp(self):
-        data = dict(host_name="Tom Jobom", host_email="tom.jobim@mpb.br",
+        data = dict(host_name="Tom Jobim", host_email="tom.jobim@mpb.br",
                     guest1_name="Baden Powell", guest1_email='baden.powell@mpb.br',
                     guest2_name="Vincius de Moraes", guest2_email='vinicius.moraes@mpb.br',
                     message='Olá, tudo bom?')
@@ -66,7 +66,7 @@ class MeetingFormPostTest(TestCase):
 
     def test_introduce_email_subject(self):
         email = mail.outbox[0]
-        expect = 'Em comum'
+        expect = 'Em Comum | Tom Jobim, te enviou uma mensagem'
 
         self.assertEqual(expect, email.subject)
 
@@ -78,7 +78,7 @@ class MeetingFormPostTest(TestCase):
 
     def test_introduce_email_to(self):
         email = mail.outbox[0]
-        expect = ['baden.powell@mpb.br', 'vinicius.moraes@mpb.br']
+        expect = ['tom.jobim@mpb.br', 'baden.powell@mpb.br', 'vinicius.moraes@mpb.br']
 
         self.assertEqual(expect, email.to)
 

@@ -11,7 +11,7 @@ def home(request):
         form = MeetingForm(request.POST)
         if form.is_valid():
 
-            subject = 'Em comum'
+            subject = 'Em Comum | {}, te enviou uma mensagem'.format(form.cleaned_data['host_name'])
             from_email = 'em@comum.org'
             to = [form.cleaned_data['host_email'], form.cleaned_data['guest1_email'], form.cleaned_data['guest2_email']]
 
