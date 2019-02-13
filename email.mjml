@@ -16,9 +16,9 @@
     </mj-section>
     <mj-section padding-bottom="20px" padding-top="10px">
       <mj-column>
-        <mj-text align="center" padding="10px 25px" font-size="20px" color="#464140"><strong>Olá {{guest1_name}}!</strong></mj-text>
+        <mj-text align="center" padding="10px 25px" font-size="20px" color="#464140"><strong>Olá {{guest1_name}} e {{guest2_name}}!</strong></mj-text>
         <mj-text align="center" font-size="18px" font-family="Arial">
-          {{host_name}} acredita que você tem algo em comum com {{guest2_name}} e lhe enviou essa mensagem:</mj-text>a
+          {{host_name}} acredita que vocês tem algo em comum, de uma olhada nesse convite</mj-text>a
         <mj-text align="center" color="#AB792E" font-size="25px" font-family="Arial, sans-serif" font-weight="bold" line-height="35px" padding-top="20px">
           {{message}} <br/>
         </mj-text>

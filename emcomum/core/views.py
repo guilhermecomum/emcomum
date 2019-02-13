@@ -13,7 +13,7 @@ def home(request):
 
             subject = 'Em comum'
             from_email = 'em@comum.org'
-            to = [form.cleaned_data['guest1_email'], form.cleaned_data['guest2_email']]
+            to = [form.cleaned_data['host_email'], form.cleaned_data['guest1_email'], form.cleaned_data['guest2_email']]
 
             html_content = render_to_string('email.html', form.cleaned_data)
             text_content = strip_tags(html_content)
