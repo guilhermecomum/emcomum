@@ -1,7 +1,8 @@
 from django.core import mail
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
-from emcomum.core.forms import IntroduceForm
+from emcomum.core.forms import MeetingForm
+from emcomum.core.models import Meeting
 
 
 class HomeTest(TestCase):
@@ -36,22 +37,22 @@ class HomeTest(TestCase):
     def test_has_form(self):
         """Context must have contact form"""
         form = self.res.context['form']
-        self.assertIsInstance(form, IntroduceForm)
+        self.assertIsInstance(form, MeetingForm)
 
     def test_form_has_fields(self):
         """Form must have fields"""
         form = self.res.context['form']
-        self.assertSequenceEqual(['from_name', 'from_email',
-                                  'person1_name', 'person1_email',
-                                  'person2_name', 'person2_email',
+        self.assertSequenceEqual(['host_name', 'host_email',
+                                  'guest1_name', 'guest1_email',
+                                  'guest2_name', 'guest2_email',
                                   'message'], list(form.fields))
 
 
-class IntroduceFormPostTest(TestCase):
+class MeetingFormPostTest(TestCase):
     def setUp(self):
-        data = dict(from_name="Tom Jobom", from_email="tom.jobim@mpb.br",
-                    person1_name="Baden Powell", person1_email='baden.powell@mpb.br',
-                    person2_name="Vincius de Moraes", person2_email='vinicius.moraes@mpb.br',
+        data = dict(host_name="Tom Jobom", host_email="tom.jobim@mpb.br",
+                    guest1_name="Baden Powell", guest1_email='baden.powell@mpb.br',
+                    guest2_name="Vincius de Moraes", guest2_email='vinicius.moraes@mpb.br',
                     message='Olá, tudo bom?')
 
         self.res = self.client.post('/', data)
@@ -81,8 +82,11 @@ class IntroduceFormPostTest(TestCase):
 
         self.assertEqual(expect, email.to)
 
+    def test_save_meeting(self):
+        self.assertTrue(Meeting.objects.exists())
 
-class IntroduceFormInvalidPost(TestCase):
+
+class MeetingFormInvalidPost(TestCase):
     def setUp(self):
         self.res = self.client.post('/', {})
 
@@ -95,11 +99,14 @@ class IntroduceFormInvalidPost(TestCase):
 
     def test_has_form(self):
         form = self.res.context['form']
-        self.assertIsInstance(form, IntroduceForm)
+        self.assertIsInstance(form, MeetingForm)
 
     def test_form_has_erros(self):
         form = self.res.context['form']
         self.assertTrue(form.errors)
+
+    def test_dont_save_meeting(self):
+        self.assertFalse(Meeting.objects.exists())
 
 
 class ThanksTest(TestCase):
