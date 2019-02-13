@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'emcomum.context_processors.ga_tracking',
             ],
         },
     },
@@ -130,6 +131,9 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+#Analytics
+GA_TRACKING = config('GA_TRACKING')
 
 #Green Setup
 TEST_RUNNER="green.djangorunner.DjangoRunner"

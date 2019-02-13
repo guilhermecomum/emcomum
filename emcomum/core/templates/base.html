@@ -9,5 +9,8 @@
   <body>
     {% block content %}
     {% endblock content %}
+    {% block ga %}
+    {% include "ga.html" with ga_tracking=ga_tracking %}
+    {% endblock ga %}
   </body>
 </html>
