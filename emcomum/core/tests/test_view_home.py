@@ -120,3 +120,16 @@ class ThanksTest(TestCase):
     def test_template(self):
         """Must use index.html"""
         self.assertTemplateUsed(self.res, 'thanks.html')
+
+
+class AboutPageTest(TestCase):
+    def setUp(self):
+        self.res = self.client.get(r('about'))
+
+    def test_get(self):
+        """GET / must return status code 200"""
+        self.assertEqual(200, self.res.status_code)
+
+    def test_template(self):
+        """Must use index.html"""
+        self.assertTemplateUsed(self.res, 'about.html')

@@ -34,3 +34,6 @@ def home(request):
 
 def thanks(request):
     return render(request, 'thanks.html')
+
+def about(request):
+    return render(request, 'about.html')
