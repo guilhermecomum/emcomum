@@ -34,8 +34,6 @@ pip install -r requirements.txt
 cp .env-sample .env
 python manage.py test
 ```
-# configura o email
-git push heroku master -f
 
 ## Créditos
 Cabeçalho do email - https://unsplash.com/photos/5-7_3m8AREU
